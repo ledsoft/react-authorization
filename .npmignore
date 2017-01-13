@@ -3,6 +3,7 @@ node_modules
 .DS_Store
 npm-debug.log
 test/bundle.js
+test/reports
 .idea
 docs
 src
