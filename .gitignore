@@ -1,0 +1,9 @@
+.idea
+*.iml
+node_modules
+**/npm-debug.log
+test/reports
+*.tgz
+lib
+dist
+**/bundle.js
