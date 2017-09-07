@@ -1,6 +1,7 @@
 'use strict';
 
-import React from 'react';
+import React from "react";
+import PropTypes from "prop-types";
 
 const IfAllGranted = (props) => {
     const expected = props.expected,
@@ -10,14 +11,17 @@ const IfAllGranted = (props) => {
             return props.unauthorized;
         }
     }
+    if (!Array.isArray(props.children)) {
+        return props.children ? props.children : null;
+    }
     return React.createElement(props.element, null, props.children);
 };
 
 IfAllGranted.propTypes = {
-    expected: React.PropTypes.array.isRequired,     // The expected roles
-    actual: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.array]),     // The actual roles
-    element: React.PropTypes.string,     // Type of element to render around the children, defaults to 'div'
-    unauthorized: React.PropTypes.node  // Node to render if the actual roles do not match the expected
+    expected: PropTypes.array.isRequired,     // The expected roles
+    actual: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),     // The actual roles
+    element: PropTypes.string,     // Type of element to render around the children, defaults to 'div'
+    unauthorized: PropTypes.node  // Node to render if the actual roles do not match the expected
 };
 
 IfAllGranted.defaultProps = {
