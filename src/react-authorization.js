@@ -1,5 +1,3 @@
-'use strict';
-
 import IfAllGranted from './IfAllGranted';
 import IfAnyGranted from './IfAnyGranted';
 import IfGranted from './IfGranted';
