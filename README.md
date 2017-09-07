@@ -24,19 +24,65 @@ Displays the child `div` only if the `user.getRoles()` result contains the role 
 ```
 
 Displays the child `div` only if the `user.getRoles()` contains both `ROLE_USER` and `ROLE_ADMIN`. If not, a heading saying 
-`You shall not pass!` is displayed.
+`You shall not pass!` is displayed. 
+
 Specifying the node to display when expected roles are not met is optional (see the API section).
 
+#### Rendering
+
+If there is at most one child passed to the authorization component, it is rendered directly. I.e., the result of the above declaration
+will render the following HTML snippet:
+```HTML
+<div class="panel">
+    Child with restricted access.
+</div>
+```
+If multiple children are passed, they are wrapped in a structured element, by default a `div`. So the following declaration:
+```
+<IfAllGranted expected={['ROLE_USER', 'ROLE_ADMIN']} actual={user.getRoles()} unauthorized={<h3>You shall not pass!</h3>}>
+    <div className="panel">
+        Child One.
+    </div>
+    <div className="panel">
+        Child Two.
+    </div>
+</IfAllGranted>
+```
+will be rendered as:
+```HTML
+<div>
+    <div class="panel">
+        Child One.
+    </div>
+    <div class="panel">
+        Child Two.
+    </div>
+</div>
+```
+
+This default wrapper element can be overridden using the `element` prop: 
 ```
 <IfAnyGranted expected={['ROLE_USER', 'ROLE_ADMIN']} actual={user.getRoles()} element='span'>
     <div className="panel">
         Child with restricted access.
     </div>
+    <div>
+        And another one.
+    </div>
 </IfAnyGranted>
 ```
 
-Displays the child `div` if `user.getRoles()` contain `ROLE_USER` or `ROLE_ADMIN`. The children are wrapped in a `span` instead
-of a `div`.
+The children above are wrapped in a `span` instead of a `div`:
+```HTML
+<span>
+    <div class="panel">
+        Child with restricted access.
+    </div>
+    <div>
+        And another one.
+    </div>
+</span>
+```
 
 ## API
 
@@ -55,7 +101,7 @@ Displays the children if and only if all of the expected roles are granted.
 | -------- | ----- | -------- | ------------- | ----------- |
 | expected | Array | `true`     |               | An array of roles required to display the children. |
 | actual   | String/Array | `false` | []        | An array of actually granted roles, or a single role (shorthand for an array with one element). |
-| element  | String | `false`   | div           | Element used to enclose the rendered children.      |
+| element  | String | `false`   | div           | Element used to enclose the rendered children. Ignored if there is at most one child.      |
 | unauthorized | Node | `false` | `null`          | Node to display when the actual roles do not meet the expectations. Defaults to `null`, which displays nothing. |
 
 
@@ -67,7 +113,7 @@ Displays the children if at least one of the expected roles is granted.
 | -------- | ----- | -------- | ------------- | ----------- |
 | expected | Array | `true`     |               | An array of roles required to display the children. |
 | actual   | String/Array | `false` | []        | An array of actually granted roles, or a single role (shorthand for an array with one element). |
-| element  | String | `false`   | div           | Element used to enclose the rendered children.      |
+| element  | String | `false`   | div           | Element used to enclose the rendered children. Ignored if there is at most one child.     |
 | unauthorized | Node | `false` | `null`          | Node to display when the actual roles do not meet the expectations. Defaults to `null`, which displays nothing. |
 
 
@@ -79,7 +125,7 @@ Displays the children if the expected role is granted.
 | -------- | ----- | -------- | ------------- | ----------- |
 | expected | String | `true`     |               | The role required to display the children. |
 | actual   | String/Array | `false` | []        | An array of actually granted roles, or a single role (shorthand for an array with one element). |
-| element  | String | `false`   | div           | Element used to enclose the rendered children.      |
+| element  | String | `false`   | div           | Element used to enclose the rendered children. Ignored if there is at most one child.     |
 | unauthorized | Node | `false` | `null`          | Node to display when the actual roles do not meet the expectations. Defaults to `null`, which displays nothing. |
 
 
