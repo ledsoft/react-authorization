@@ -1,7 +1,7 @@
 // this handles setup of the fake DOM when the tests are run in Node
 // Based on https://github.com/robertknight/react-testing
 
-import jsdom from 'jsdom';
+import {JSDOM} from 'jsdom';
 
 var FAKE_DOM_HTML = `
 <html>
@@ -26,9 +26,10 @@ function setupFakeDOM() {
     //
     // If you want to do any async setup in your tests, use
     // the before() and beforeEach() hooks.
-    global.document = jsdom.jsdom(FAKE_DOM_HTML);
-    global.window = document.defaultView;
-    global.navigator = window.navigator;
+    const dom = new JSDOM(FAKE_DOM_HTML);
+    global.document = dom.window.document;
+    global.window = dom.window;
+    global.navigator = dom.window.navigator;
 }
 
 setupFakeDOM();

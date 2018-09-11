@@ -129,6 +129,18 @@ Displays the children if the expected role is granted.
 | unauthorized | Node | `false` | `null`          | Node to display when the actual roles do not meet the expectations. Defaults to `null`, which displays nothing. |
 
 
+### `IfNoneGranted`
+
+Displays the children if the none of the expected roles is granted. Useful, for example, to prevent display of editing components to guests or otherwise restricted users.
+
+| Property | Type  | Required | Default value | Explanation |
+| -------- | ----- | -------- | ------------- | ----------- |
+| expected | String/Array | `true`     |               | An array of roles (or a single role) which must not be present to display children. |
+| actual   | String/Array | `false` | []        | An array of actually granted roles, or a single role (shorthand for an array with one element). |
+| element  | String | `false`   | div           | Element used to enclose the rendered children. Ignored if there is at most one child.     |
+| unauthorized | Node | `false` | `null`          | Node to display when the actual roles do not meet the expectations. Defaults to `null`, which displays nothing. |
+
+
 ## Installation
 
 Install with _npm_ using
