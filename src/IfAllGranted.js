@@ -12,18 +12,18 @@ const IfAllGranted = (props) => {
     if (!Array.isArray(props.children)) {
         return props.children ? props.children : null;
     }
-    return React.createElement(props.element, null, props.children);
+    return <React.Fragment>
+        {props.children}
+    </React.Fragment>;
 };
 
 IfAllGranted.propTypes = {
     expected: PropTypes.array.isRequired,     // The expected roles
     actual: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),     // The actual roles
-    element: PropTypes.string,     // Type of element to render around the children, defaults to 'div'
     unauthorized: PropTypes.node  // Node to render if the actual roles do not match the expected
 };
 
 IfAllGranted.defaultProps = {
-    element: 'div',
     unauthorized: null
 };
 

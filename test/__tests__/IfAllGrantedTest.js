@@ -84,7 +84,7 @@ describe('IfAllGranted', () => {
         expect(element.firstChild.nodeName.toLowerCase()).toEqual('h1');
     });
 
-    it('wraps children in a div element if there are multiple', () => {
+    it('renders children directly without any wrapper', () => {
         const expected = ['ROLE_USER', 'ROLE_ADMIN'],
             actual = ['ROLE_USER', 'ROLE_ADMIN'];
         const root = Environment.render(<IfAllGranted expected={expected} actual={actual}>
@@ -93,20 +93,7 @@ describe('IfAllGranted', () => {
         </IfAllGranted>);
         const element = ReactDOM.findDOMNode(root);
         // The root is a div - TestApp
-        expect(element.firstChild.nodeName.toLowerCase()).toEqual('div');
-    });
-
-    it('renders custom element around the children', () => {
-        const expected = ['ROLE_USER'],
-            actual = ['ROLE_USER'];
-        const component = Environment.render(<IfAllGranted expected={expected} actual={actual} element='span'>
-            <TestComponent/>
-            <TestComponent/>
-        </IfAllGranted>);
-
-        const comp = TestUtils.findRenderedDOMComponentWithTag(component, 'span');
-        expect(comp).toBeDefined();
-        expect(comp).not.toBeNull();
+        expect(element.firstChild.nodeName.toLowerCase()).toEqual('h1');
     });
 
     it('renders nothing when no children are passed to the component', () => {

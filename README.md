@@ -30,6 +30,35 @@ Specifying the node to display when expected roles are not met is optional (see 
 
 #### Rendering
 
+##### Version 0.1.0
+
+Since version 0.1.0, the library is using [React Fragments](https://reactjs.org/docs/fragments.html) to render the children, so no
+additional wrapper element is added. Therefore, even multiple children:
+
+```
+<IfAnyGranted expected={['ROLE_USER', 'ROLE_ADMIN']} actual={user.getRoles()}>
+    <div className="panel">
+        Child with restricted access.
+    </div>
+    <div>
+        And another one.
+    </div>
+</IfAnyGranted>
+```
+
+Will be rendered directly:
+
+```HTML
+<div class="panel">
+    Child with restricted access.
+</div>
+<div>
+    And another one.
+</div>
+```
+
+#### Version 0.0.3 and Older
+
 If there is at most one child passed to the authorization component, it is rendered directly. I.e., the result of the above declaration
 will render the following HTML snippet:
 ```HTML
@@ -101,7 +130,6 @@ Displays the children if and only if all of the expected roles are granted.
 | -------- | ----- | -------- | ------------- | ----------- |
 | expected | Array | `true`     |               | An array of roles required to display the children. |
 | actual   | String/Array | `false` | []        | An array of actually granted roles, or a single role (shorthand for an array with one element). |
-| element  | String | `false`   | div           | Element used to enclose the rendered children. Ignored if there is at most one child.      |
 | unauthorized | Node | `false` | `null`          | Node to display when the actual roles do not meet the expectations. Defaults to `null`, which displays nothing. |
 
 
@@ -113,7 +141,6 @@ Displays the children if at least one of the expected roles is granted.
 | -------- | ----- | -------- | ------------- | ----------- |
 | expected | Array | `true`     |               | An array of roles required to display the children. |
 | actual   | String/Array | `false` | []        | An array of actually granted roles, or a single role (shorthand for an array with one element). |
-| element  | String | `false`   | div           | Element used to enclose the rendered children. Ignored if there is at most one child.     |
 | unauthorized | Node | `false` | `null`          | Node to display when the actual roles do not meet the expectations. Defaults to `null`, which displays nothing. |
 
 
@@ -125,19 +152,17 @@ Displays the children if the expected role is granted.
 | -------- | ----- | -------- | ------------- | ----------- |
 | expected | String | `true`     |               | The role required to display the children. |
 | actual   | String/Array | `false` | []        | An array of actually granted roles, or a single role (shorthand for an array with one element). |
-| element  | String | `false`   | div           | Element used to enclose the rendered children. Ignored if there is at most one child.     |
 | unauthorized | Node | `false` | `null`          | Node to display when the actual roles do not meet the expectations. Defaults to `null`, which displays nothing. |
 
 
 ### `IfNoneGranted`
 
-Displays the children if the none of the expected roles is granted. Useful, for example, to prevent display of editing components to guests or otherwise restricted users.
+Displays the children if none of the expected roles is granted. Useful, for example, to prevent display of editing components to guests or otherwise restricted users.
 
 | Property | Type  | Required | Default value | Explanation |
 | -------- | ----- | -------- | ------------- | ----------- |
 | expected | String/Array | `true`     |               | An array of roles (or a single role) which must not be present to display children. |
 | actual   | String/Array | `false` | []        | An array of actually granted roles, or a single role (shorthand for an array with one element). |
-| element  | String | `false`   | div           | Element used to enclose the rendered children. Ignored if there is at most one child.     |
 | unauthorized | Node | `false` | `null`          | Node to display when the actual roles do not meet the expectations. Defaults to `null`, which displays nothing. |
 
 

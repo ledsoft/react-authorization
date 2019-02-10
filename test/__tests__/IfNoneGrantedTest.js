@@ -62,7 +62,7 @@ describe('IfNoneGranted', () => {
         const expected = ['ROLE_USER', 'ROLE_GUEST'],
             actual = ['ROLE_USER'];
         const component = Environment.render(<IfNoneGranted expected={expected} actual={actual}
-                                                           unauthorized={<Unauthorized/>}>
+                                                            unauthorized={<Unauthorized/>}>
             <TestComponent/>
         </IfNoneGranted>);
 
@@ -84,7 +84,7 @@ describe('IfNoneGranted', () => {
         expect(element.firstChild.nodeName.toLowerCase()).toEqual('h1');
     });
 
-    it('wraps children in a div element if there are multiple', () => {
+    it('render children directly without any wrapper element', () => {
         const expected = ['ROLE_GUEST'],
             actual = ['ROLE_USER', 'ROLE_ADMIN'];
         const component = Environment.render(<IfNoneGranted expected={expected} actual={actual}>
@@ -93,20 +93,7 @@ describe('IfNoneGranted', () => {
         </IfNoneGranted>);
         const element = ReactDOM.findDOMNode(component);
         // The root is a div - TestApp
-        expect(element.firstChild.nodeName.toLowerCase()).toEqual('div');
-    });
-
-    it('renders custom element around the children', () => {
-        const expected = ['ROLE_GUEST'],
-            actual = ['ROLE_USER', 'ROLE_ADMIN'];
-        const component = Environment.render(<IfNoneGranted expected={expected} actual={actual} element='span'>
-            <TestComponent/>
-            <TestComponent/>
-        </IfNoneGranted>);
-
-        const comp = TestUtils.findRenderedDOMComponentWithTag(component, 'span');
-        expect(comp).toBeDefined();
-        expect(comp).not.toBeNull();
+        expect(element.firstChild.nodeName.toLowerCase()).toEqual('h1');
     });
 
     it('renders nothing when no children are passed to the component', () => {
