@@ -57,7 +57,7 @@ Will be rendered directly:
 </div>
 ```
 
-#### Version 0.0.3 and Older
+##### Version 0.0.3 and Older
 
 If there is at most one child passed to the authorization component, it is rendered directly. I.e., the result of the above declaration
 will render the following HTML snippet:
