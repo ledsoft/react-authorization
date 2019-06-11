@@ -22,6 +22,7 @@
     "react-dom": ">= 16.2.0"
   },
   "main": "lib/react-authorization.js",
+  "types": "types/react-authorization.d.ts",
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
@@ -29,6 +30,7 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-stage-0": "^7.0.0",
     "@babel/plugin-transform-runtime": "^7.4.4",
+    "@types/react": "^16.8.19",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.6",
@@ -44,7 +46,8 @@
     "webpack-node-externals": "^1.7.2"
   },
   "files": [
-    "lib"
+    "lib",
+    "types"
   ],
   "scripts": {
     "test": "jest --env=jsdom",
