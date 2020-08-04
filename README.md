@@ -118,7 +118,8 @@ The children above are wrapped in a `span` instead of a `div`:
 Supported components:
 * `IfAllGranted` - requires all of the expected roles to be granted,
 * `IfAnyGranted` - requires at least one of the expected roles to be granted,
-* `IfGranted` - shorthand for expecting one role only - corresponds to using `IfAnyGranted` with exactly one role expected.
+* `IfGranted` - shorthand for expecting one role only - corresponds to using `IfAnyGranted` with exactly one role expected,
+* `IfNoneGranted` - requires that none of the expected roles is granted (e.g., role `guest` must not be set for editing access).
 
 API of the respective components is described below.
 
