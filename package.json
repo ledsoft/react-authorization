@@ -15,7 +15,7 @@
     "url": "https://github.com/ledsoft/react-authorization.git"
   },
   "dependencies": {
-    "@babel/runtime": "^7.8.7"
+    "@babel/runtime": "^7.11.2"
   },
   "peerDependencies": {
     "react": ">= 16.2.0",
@@ -24,27 +24,27 @@
   "main": "lib/react-authorization.js",
   "types": "types/react-authorization.d.ts",
   "devDependencies": {
-    "acorn": "^7.1.1",
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.8.7",
-    "@babel/preset-env": "^7.8.7",
-    "@babel/preset-react": "^7.8.3",
+    "acorn": "^8.0.1",
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
     "@babel/preset-stage-0": "^7.8.3",
-    "@babel/plugin-transform-runtime": "^7.8.3",
-    "@types/react": "^16.9.23",
+    "@babel/plugin-transform-runtime": "^7.11.5",
+    "@types/react": "^16.9.49",
     "babel-eslint": "^10.1.0",
-    "babel-jest": "^25.1.0",
+    "babel-jest": "^26.3.0",
     "babel-loader": "^8.1.0",
     "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.2",
-    "jest": "^25.1.0",
+    "enzyme-adapter-react-16": "^1.15.4",
+    "jest": "^26.4.2",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "watchify": "^3.11.1",
-    "webpack": "^4.42.0",
-    "webpack-cli": "^3.3.11",
-    "webpack-node-externals": "^1.7.2"
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-node-externals": "^2.5.2"
   },
   "files": [
     "lib",
