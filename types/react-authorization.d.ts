@@ -3,6 +3,7 @@ import IfAllGrantedProps = ReactAuthorization.IfAllGrantedProps;
 import IfAnyGrantedProps = ReactAuthorization.IfAnyGrantedProps;
 import IfGrantedProps = ReactAuthorization.IfGrantedProps;
 import IfNoneGrantedProps = ReactAuthorization.IfNoneGrantedProps;
+import IfAuthorizedProps = ReactAuthorization.IfAuthorizedProps;
 
 export namespace ReactAuthorization {
     interface CommonProps {
@@ -25,6 +26,11 @@ export namespace ReactAuthorization {
     interface IfNoneGrantedProps extends CommonProps {
         expected?: string | string[];
     }
+
+    interface IfAuthorizedProps {
+        isAuthorized: () => boolean;
+        unauthorized?: React.ReactNode | null;
+    }
 }
 
 declare const IfAllGranted: React.FC<IfAllGrantedProps>;
@@ -35,4 +41,6 @@ declare const IfGranted: React.FC<IfGrantedProps>;
 
 declare const IfNoneGranted: React.FC<IfNoneGrantedProps>;
 
-export {IfAllGranted, IfAnyGranted, IfGranted, IfNoneGranted};
+declare const IfAuthorized: React.FC<IfAuthorizedProps>;
+
+export {IfAllGranted, IfAnyGranted, IfGranted, IfNoneGranted, IfAuthorized};
