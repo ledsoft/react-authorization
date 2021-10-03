@@ -40,10 +40,8 @@ Displays the child `div` only if the specified authorization function returns a 
 
 #### Rendering
 
-##### Version 0.1.0
-
-Since version 0.1.0, the library is using [React Fragments](https://reactjs.org/docs/fragments.html) to render the
-children, so no additional wrapper element is added. Therefore, even multiple children:
+The library is using [React Fragments](https://reactjs.org/docs/fragments.html) to render the
+children directly without any wrapper element. For example:
 
 ```
 <IfAnyGranted expected={['ROLE_USER', 'ROLE_ADMIN']} actual={user.getRoles()}>
@@ -68,71 +66,7 @@ Will be rendered directly:
 </div>
 ```
 
-##### Version 0.0.3 and Older
-
-If there is at most one child passed to the authorization component, it is rendered directly. I.e., the result of the
-above declaration will render the following HTML snippet:
-
-```HTML
-
-<div class="panel">
-    Child with restricted access.
-</div>
-```
-
-If multiple children are passed, they are wrapped in a structured element, by default a `div`. So the following
-declaration:
-
-```
-<IfAllGranted expected={['ROLE_USER', 'ROLE_ADMIN']} actual={user.getRoles()} unauthorized={<h3>You shall not pass!</h3>}>
-    <div className="panel">
-        Child One.
-    </div>
-    <div className="panel">
-        Child Two.
-    </div>
-</IfAllGranted>
-```
-
-will be rendered as:
-
-```HTML
-
-<div>
-    <div class="panel">
-        Child One.
-    </div>
-    <div class="panel">
-        Child Two.
-    </div>
-</div>
-```
-
-This default wrapper element can be overridden using the `element` prop:
-
-```
-<IfAnyGranted expected={['ROLE_USER', 'ROLE_ADMIN']} actual={user.getRoles()} element='span'>
-    <div className="panel">
-        Child with restricted access.
-    </div>
-    <div>
-        And another one.
-    </div>
-</IfAnyGranted>
-```
-
-The children above are wrapped in a `span` instead of a `div`:
-
-```HTML
-<span>
-    <div class="panel">
-        Child with restricted access.
-    </div>
-    <div>
-        And another one.
-    </div>
-</span>
-```
+Versions prior to 0.1.0 used a wrapper element (a `div` by default, but could be overridden).
 
 ## API
 
