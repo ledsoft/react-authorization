@@ -9,9 +9,6 @@ const IfAllGranted = (props) => {
             return props.unauthorized;
         }
     }
-    if (!Array.isArray(props.children)) {
-        return props.children ? props.children : null;
-    }
     return <React.Fragment>
         {props.children}
     </React.Fragment>;
