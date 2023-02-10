@@ -1,11 +1,12 @@
 {
   "name": "react-authorization",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "React authorization library.",
   "license": "MIT",
   "keywords": [
     "react",
-    "authorization"
+    "authorization",
+    "declarative"
   ],
   "author": {
     "name": "Martin Ledvinka",
