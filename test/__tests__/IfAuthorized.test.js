@@ -58,4 +58,28 @@ describe('IfAuthorized', () => {
         const root = mount(<IfAuthorized isAuthorized={isAuthorized}/>);
         expect(root.children().length).toEqual(0);
     });
+
+    it('renders children when true is passed as isAuthorized prop value', () => {
+        const component = shallow(<IfAuthorized isAuthorized={true}>
+            <TestComponent/>
+        </IfAuthorized>);
+
+        expect(component.exists(TestComponent)).toBeTruthy();
+    });
+
+    it('does not render children when false is passed as isAuthorized prop value', () => {
+        const component = shallow(<IfAuthorized isAuthorized={false}>
+            <TestComponent/>
+        </IfAuthorized>);
+
+        expect(component.exists(TestComponent)).toBeFalsy();
+    });
+
+    it('does not render children when nothing is passed as isAuthorized prop value', () => {
+        const component = shallow(<IfAuthorized>
+            <TestComponent/>
+        </IfAuthorized>);
+
+        expect(component.exists(TestComponent)).toBeFalsy();
+    });
 });

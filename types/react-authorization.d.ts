@@ -28,7 +28,7 @@ export namespace ReactAuthorization {
     }
 
     interface IfAuthorizedProps {
-        isAuthorized: () => boolean;
+        isAuthorized?: boolean | (() => boolean);
         unauthorized?: React.ReactNode | null;
     }
 }

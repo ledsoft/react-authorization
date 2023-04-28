@@ -24,8 +24,8 @@ Displays the child `div` only if the `user.getRoles()` result contains the role 
 ```
 
 Displays the child `div` only if the `user.getRoles()` contains both `ROLE_USER` and `ROLE_ADMIN`. If not, a heading
-saying `You shall not pass!` is displayed.
-Specifying the node to display when expected roles are not met is optional (see the API section).
+saying `You shall not pass!` is displayed. Specifying the node to display when expected roles are not met is optional (
+see the API section).
 
 ```jsx
 <IfAuthorized isAuthorized={() => user.getRoles().indexOf('ROLE_ADMIN') !== -1}>
@@ -37,11 +37,27 @@ Specifying the node to display when expected roles are not met is optional (see 
 
 Displays the child `div` only if the specified authorization function returns a truthy value.
 
+```jsx
+<IfAuthorized isAuthorized={hasAccess(AccessLevel.WRITE, AccessLevel.READ)}>
+    <div className="panel">
+        Child with restricted access.
+    </div>
+</IfAuthorized>
+```
+
+Displays the child `div` if the `hasAccess` function (first parameter being required access level, second the actual granted) returned true.
+This is basically equivalent to doing
+```jsx
+{hasAccess(AccessLevel.WRITE, AccessLevel.READ) && <div className="panel">
+  Child with restricted access.
+</div>}
+```
+You be the judge of which is nicer.
 
 #### Rendering
 
-The library is using [React Fragments](https://reactjs.org/docs/fragments.html) to render the
-children directly without any wrapper element. For example:
+The library is using [React Fragments](https://reactjs.org/docs/fragments.html) to render the children directly without
+any wrapper element. For example:
 
 ```
 <IfAnyGranted expected={['ROLE_USER', 'ROLE_ADMIN']} actual={user.getRoles()}>
@@ -126,12 +142,12 @@ components to guests or otherwise restricted users.
 
 ### `IfAuthorized`
 
-Displays the children if the provided authorization function returns a truthy value. Useful for more complex
+Displays the children if the provided authorization function returns a truthy value or if the provided boolean value is `true`. Useful for more complex
 authorization logic which should still be declaratively used.
 
 | Property | Type  | Required | Default value | Explanation |
 | -------- | ----- | -------- | ------------- | ----------- |
-| isAuthorized | Function | `true`     |      | An authorization function with signature `() => boolean`. |
+| isAuthorized | Function/boolean | `false`   |      | An authorization function with signature `() => boolean` or a boolean. Defaults to `undefined`, which is equivalent to `false`. |
 | unauthorized | Node | `false` | `null`      | Node to display when the authorization function returns a falsy value. Defaults to `null`, which displays nothing. |
 
 ## Installation
