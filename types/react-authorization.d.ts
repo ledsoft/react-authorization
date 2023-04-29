@@ -9,6 +9,7 @@ export namespace ReactAuthorization {
     interface CommonProps {
         actual?: string | string[];
         unauthorized?: React.ReactNode | null;
+        children?: React.ReactNode | React.ReactNode[];
     }
 
     interface IfAllGrantedProps extends CommonProps {
