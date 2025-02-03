@@ -31,6 +31,7 @@ export namespace ReactAuthorization {
     interface IfAuthorizedProps {
         isAuthorized?: boolean | (() => boolean);
         unauthorized?: React.ReactNode | null;
+        children?: React.ReactNode | React.ReactNode[];
     }
 }
 
@@ -44,4 +45,4 @@ declare const IfNoneGranted: React.FC<IfNoneGrantedProps>;
 
 declare const IfAuthorized: React.FC<IfAuthorizedProps>;
 
-export {IfAllGranted, IfAnyGranted, IfGranted, IfNoneGranted, IfAuthorized};
+export { IfAllGranted, IfAnyGranted, IfGranted, IfNoneGranted, IfAuthorized };
