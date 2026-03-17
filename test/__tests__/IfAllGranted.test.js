@@ -4,7 +4,6 @@ import TestComponent from "../environment/TestComponent";
 import IfAllGranted from "../../src/IfAllGranted";
 import {mount, shallow} from "enzyme";
 import Unauthorized from "../environment/Unauthorized";
-import IfAnyGranted from "../../src/IfAnyGranted";
 
 describe('IfAllGranted', () => {
 

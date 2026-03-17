@@ -1,6 +1,6 @@
 {
   "name": "react-authorization",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "React authorization library.",
   "license": "MIT",
   "keywords": [
@@ -17,7 +17,7 @@
     "url": "https://github.com/ledsoft/react-authorization.git"
   },
   "dependencies": {
-    "@babel/runtime": "^7.28.3"
+    "@babel/runtime": "^7.29.2"
   },
   "peerDependencies": {
     "react": ">= 16.2.0",
@@ -26,12 +26,12 @@
   "main": "lib/react-authorization.js",
   "types": "types/react-authorization.d.ts",
   "devDependencies": {
-    "@babel/cli": "^7.28.3",
-    "@babel/core": "^7.28.3",
-    "@babel/preset-env": "^7.28.3",
-    "@babel/preset-react": "^7.27.1",
+    "@babel/cli": "^7.28.6",
+    "@babel/core": "^7.29.0",
+    "@babel/preset-env": "^7.29.2",
+    "@babel/preset-react": "^7.28.5",
     "@babel/preset-stage-0": "^7.8.3",
-    "@babel/plugin-transform-runtime": "^7.28.3",
+    "@babel/plugin-transform-runtime": "^7.29.0",
     "@types/react": "^17.0.88",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^29.5.0",
@@ -42,7 +42,7 @@
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "webpack": "^5.81.0",
+    "webpack": "^5.105.4",
     "webpack-cli": "^4.10.0",
     "webpack-node-externals": "^3.0.0"
   },
