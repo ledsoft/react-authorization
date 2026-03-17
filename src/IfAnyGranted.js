@@ -1,9 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const IfAnyGranted = (props) => {
-    const expected = props.expected,
-        actual = props.actual ? (Array.isArray(props.actual) ? props.actual : [props.actual]) : [];
+const IfAnyGranted = ({expected, actual, unauthorized = null, children}) => {
+    actual = actual ? (Array.isArray(actual) ? actual : [actual]) : [];
     let found = expected.length <= 0;
     for (let i = 0; i < expected.length; i++) {
         if (actual.indexOf(expected[i]) !== -1) {
@@ -13,10 +12,10 @@ const IfAnyGranted = (props) => {
     }
     if (found) {
         return <React.Fragment>
-            {props.children}
+            {children}
         </React.Fragment>
     } else {
-        return props.unauthorized;
+        return unauthorized;
     }
 };
 
@@ -24,10 +23,6 @@ IfAnyGranted.propTypes = {
     expected: PropTypes.array.isRequired,     // The expected roles
     actual: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),     // The actual roles
     unauthorized: PropTypes.node  // Node to render if the actual roles do not match any the expected
-};
-
-IfAnyGranted.defaultProps = {
-    unauthorized: null
 };
 
 export default IfAnyGranted;
