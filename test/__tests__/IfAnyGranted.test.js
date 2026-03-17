@@ -84,4 +84,12 @@ describe('IfAnyGranted', () => {
         const root = mount(<IfAnyGranted expected={expected} actual={actual}/>);
         expect(root.children().length).toEqual(0);
     });
+
+    it('render children when expected array is empty', () => {
+        const root = mount(<IfAnyGranted expected={[]} actual={['ROLE_USER']}>
+            <TestComponent/>
+        </IfAnyGranted>);
+        // The root is a div - TestApp
+        expect(root.getDOMNode().nodeName.toLowerCase()).toEqual('h1');
+    });
 });

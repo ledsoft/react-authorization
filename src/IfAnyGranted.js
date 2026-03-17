@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const IfAnyGranted = (props) => {
     const expected = props.expected,
         actual = props.actual ? (Array.isArray(props.actual) ? props.actual : [props.actual]) : [];
-    let found = false;
+    let found = expected.length <= 0;
     for (let i = 0; i < expected.length; i++) {
         if (actual.indexOf(expected[i]) !== -1) {
             found = true;

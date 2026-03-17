@@ -4,6 +4,7 @@ import TestComponent from "../environment/TestComponent";
 import IfAllGranted from "../../src/IfAllGranted";
 import {mount, shallow} from "enzyme";
 import Unauthorized from "../environment/Unauthorized";
+import IfAnyGranted from "../../src/IfAnyGranted";
 
 describe('IfAllGranted', () => {
 
@@ -87,5 +88,13 @@ describe('IfAllGranted', () => {
             actual = ['ROLE_USER'];
         const root = mount(<IfAllGranted expected={expected} actual={actual}/>);
         expect(root.children().length).toEqual(0);
+    });
+
+    it('render children when expected array is empty', () => {
+        const root = mount(<IfAllGranted expected={[]} actual={['ROLE_USER']}>
+            <TestComponent/>
+        </IfAllGranted>);
+        // The root is a div - TestApp
+        expect(root.getDOMNode().nodeName.toLowerCase()).toEqual('h1');
     });
 });
